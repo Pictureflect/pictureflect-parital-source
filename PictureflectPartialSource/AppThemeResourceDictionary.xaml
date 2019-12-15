@@ -1,0 +1,145 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:PictureflectPartialSource">
+
+    <!-- Theme-independent brushes -->
+    <SolidColorBrush x:Key="CustomTransparentBrush" Color="Transparent"></SolidColorBrush>
+    <SolidColorBrush x:Key="CustomMainBackground" Color="#ff000000"></SolidColorBrush>
+    <!-- -->
+
+    <ResourceDictionary.ThemeDictionaries>
+        <!--Default will also be used for Dark -->
+        <ResourceDictionary x:Key="Default">
+
+            <!--Common brush resources -->
+            <SolidColorBrush x:Key="CustomAltHighBrush" Color="#ff000000"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomAltLowBrush" Color="#33000000"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomAltMediumBrush" Color="#99000000"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomAltMediumHighBrush" Color="#cc000000"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomAltMediumLowBrush" Color="#66000000"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseHighBrush" Color="#ffffffff"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseLowBrush" Color="#33ffffff"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseMediumBrush" Color="#99ffffff"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseMediumHighBrush" Color="#ccffffff"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseQuiteHighBrush" Color="#e0ffffff"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseMediumLowBrush" Color="#66ffffff"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseQuiteLowBrush" Color="#40ffffff"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseVeryLowBrush" Color="#22ffffff"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSolidLowBrush" Color="#ff444444"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSolidMediumBrush" Color="#ffaaaaaa"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSolidMediumHighBrush" Color="#ffcccccc"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSolidMediumLowBrush" Color="#ff777777"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSolidQuiteLowBrush" Color="#ff505050"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSolidVeryLowBrush" Color="#ff333333"></SolidColorBrush>
+
+            <SolidColorBrush x:Key="CustomHighTextBrush" Color="#ffffffff"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomMediumTextBrush" Color="#ffcbcbcb"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomLowTextBrush" Color="#ffaaaaaa"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomVeryLowTextBrush" Color="#ff666666"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomMediumHighTextBrush" Color="#ffd4d4d4"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomQuiteHighTextBrush" Color="#ffe2e2e2"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomQuiteHighTextDisabledBrush" Color="#99e2e2e2"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomMediumLowTextBrush" Color="#ffbbbbbb"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomErrorTextBrush" Color="#ffff5353"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomWarningTextBrush" Color="#ffff9c53"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomTextSelectionHighlightBrush" Color="#ff007ec6"></SolidColorBrush>
+
+            <SolidColorBrush x:Key="CustomAltHighTextBrush" Color="#ff000000"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomAltMediumTextBrush" Color="#ff666666"></SolidColorBrush>
+            <!-- -->
+
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="Light">
+
+            <!--Common brush resources -->
+            <SolidColorBrush x:Key="CustomAltHighBrush" Color="#ffffffff"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomAltLowBrush" Color="#44ffffff"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomAltMediumBrush" Color="#aaffffff"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomAltMediumHighBrush" Color="#ddffffff"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomAltMediumLowBrush" Color="#77ffffff"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseHighBrush" Color="#ff000000"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseLowBrush" Color="#24000000"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseMediumBrush" Color="#88000000"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseMediumHighBrush" Color="#bb000000"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseQuiteHighBrush" Color="#d0000000"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseMediumLowBrush" Color="#55000000"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseQuiteLowBrush" Color="#30000000"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseVeryLowBrush" Color="#15000000"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSolidLowBrush" Color="#ffd7d7d7"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSolidMediumBrush" Color="#ff777777"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSolidMediumHighBrush" Color="#ff444444"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSolidMediumLowBrush" Color="#ffaaaaaa"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSolidQuiteLowBrush" Color="#ffcfcfcf"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSolidVeryLowBrush" Color="#ffdadada"></SolidColorBrush>
+
+            <SolidColorBrush x:Key="CustomHighTextBrush" Color="#ff000000"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomMediumTextBrush" Color="#ff444444"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomLowTextBrush" Color="#ff666666"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomVeryLowTextBrush" Color="#ffaaaaaa"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomMediumHighTextBrush" Color="#ff333333"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomQuiteHighTextBrush" Color="#ff222222"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomQuiteHighTextDisabledBrush" Color="#99222222"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomMediumLowTextBrush" Color="#ff555555"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomErrorTextBrush" Color="#ffdc0000"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomWarningTextBrush" Color="#ffdc5d00"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomTextSelectionHighlightBrush" Color="#ff007ec6"></SolidColorBrush>
+
+            <SolidColorBrush x:Key="CustomAltHighTextBrush" Color="#ffffffff"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomAltMediumTextBrush" Color="#ff999999"></SolidColorBrush>
+            <!-- -->
+            
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="HighContrast">
+            
+            <!--Common brush resources -->
+            <SolidColorBrush x:Key="CustomAltHighBrush" Color="{ThemeResource SystemColorWindowColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomAltLowBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="0.3"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomAltMediumBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="0.7"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomAltMediumHighBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="0.8"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomAltMediumLowBrush" Color="{ThemeResource SystemColorWindowColor}" Opacity="0.5"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseHighBrush" Color="{ThemeResource SystemColorWindowTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseLowBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="0.2"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseMediumBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="0.5"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseMediumHighBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="0.65"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseQuiteHighBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="0.8"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseMediumLowBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="0.4"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseQuiteLowBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="0.3"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomBaseVeryLowBrush" Color="{ThemeResource SystemColorWindowTextColor}" Opacity="0.1"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSolidLowBrush" Color="{ThemeResource SystemColorWindowTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSolidMediumBrush" Color="{ThemeResource SystemColorWindowTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSolidMediumHighBrush" Color="{ThemeResource SystemColorWindowTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSolidMediumLowBrush" Color="{ThemeResource SystemColorWindowTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSolidQuiteLowBrush" Color="{ThemeResource SystemColorWindowTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSolidVeryLowBrush" Color="{ThemeResource SystemColorWindowTextColor}"></SolidColorBrush>
+
+            <SolidColorBrush x:Key="CustomHighTextBrush" Color="{ThemeResource SystemColorWindowTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomMediumTextBrush" Color="{ThemeResource SystemColorWindowTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomLowTextBrush" Color="{ThemeResource SystemColorWindowTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomVeryLowTextBrush" Color="{ThemeResource SystemColorWindowTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomMediumHighTextBrush" Color="{ThemeResource SystemColorWindowTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomQuiteHighTextBrush" Color="{ThemeResource SystemColorWindowTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomQuiteHighTextDisabledBrush" Color="{ThemeResource SystemColorGrayTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomMediumLowTextBrush" Color="{ThemeResource SystemColorWindowTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomErrorTextBrush" Color="{ThemeResource SystemColorWindowTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomWarningTextBrush" Color="{ThemeResource SystemColorWindowTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomTextSelectionHighlightBrush" Color="{ThemeResource SystemColorHighlightColor}"></SolidColorBrush>
+
+            <SolidColorBrush x:Key="CustomAltHighTextBrush" Color="{ThemeResource SystemColorWindowColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomAltMediumTextBrush" Color="{ThemeResource SystemColorWindowColor}"></SolidColorBrush>
+            <!-- -->
+            
+            <!-- Brushes for high contrast only -->
+            <SolidColorBrush x:Key="CustomSystemColorWindowTextBrush" Color="{ThemeResource SystemColorWindowTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSystemColorHotlightBrush" Color="{ThemeResource SystemSystemColorHotlightColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSystemColorGrayTextBrush" Color="{ThemeResource SystemColorGrayTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSystemColorHighlightTextBrush" Color="{ThemeResource SystemColorHighlightTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSystemColorHighlightBrush" Color="{ThemeResource SystemColorHighlightColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSystemColorButtonTextBrush" Color="{ThemeResource SystemColorButtonTextColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSystemColorButtonFaceBrush" Color="{ThemeResource SystemColorButtonFaceColor}"></SolidColorBrush>
+            <SolidColorBrush x:Key="CustomSystemColorWindowBrush" Color="{ThemeResource SystemColorWindowColor}"></SolidColorBrush>
+            <!-- -->
+           
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+
+</ResourceDictionary>

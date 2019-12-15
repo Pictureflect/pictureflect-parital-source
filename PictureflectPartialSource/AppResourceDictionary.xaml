@@ -1,0 +1,54 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:PictureflectPartialSource">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="AppThemeResourceDictionary.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Value converters -->
+    <local:NullVisibilityConverter x:Key="NullVisConverter"></local:NullVisibilityConverter>
+    <local:NullVisibilityInverseConverter x:Key="NullVisInverseConverter"></local:NullVisibilityInverseConverter>
+    <local:BoolInverseConverter x:Key="BoolInverseConverter"></local:BoolInverseConverter>
+    <local:VisibilityInverseConverter x:Key="VisInverseConverter"></local:VisibilityInverseConverter>
+    <!-- -->
+
+    <!--Other common resources -->
+    <FontFamily x:Key="CustomBaseFontFamily">Segoe UI</FontFamily>
+    <x:Double x:Key="CustomBaseFontSize">14</x:Double>
+    <FontFamily x:Key="CustomBaseIconFontFamily">Segoe MDL2 Assets</FontFamily>
+    <FontFamily x:Key="CustomExtraIconFontFamily">Assets/Fonts/PictureflectPhotoViewer.ttf#PictureflectPhotoViewer</FontFamily>
+    <FontFamily x:Key="CustomBaseMonospaceFontFamily">Courier New</FontFamily>
+    <!-- -->
+
+    <!--Non-brush resources which apply globally-->
+    <StaticResource x:Key="ContentControlThemeFontFamily" ResourceKey="CustomBaseFontFamily" />
+    <StaticResource x:Key="ControlContentThemeFontSize" ResourceKey="CustomBaseFontSize" />
+    <!-- -->
+
+    <!--Styles-->
+    <Style TargetType="TextBlock" x:Key="CustomBaseTextBlockStyle">
+        <Setter Property="FontFamily" Value="{ThemeResource CustomBaseFontFamily}"/>
+        <Setter Property="FontSize" Value="{ThemeResource CustomBaseFontSize}"></Setter>
+        <Setter Property="Foreground" Value="{ThemeResource CustomHighTextBrush}"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+    </Style>
+    <Style TargetType="TextBlock" x:Key="CustomHeading1TextBlockStyle" BasedOn="{StaticResource CustomBaseTextBlockStyle}">
+        <Setter Property="FontSize" Value="21"></Setter>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="CustomHeading2TextBlockStyle" BasedOn="{StaticResource CustomBaseTextBlockStyle}">
+        <Setter Property="FontSize" Value="18"></Setter>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="CustomHeading3TextBlockStyle" BasedOn="{StaticResource CustomBaseTextBlockStyle}">
+        <Setter Property="FontSize" Value="16"></Setter>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="CustomHeading4TextBlockStyle" BasedOn="{StaticResource CustomBaseTextBlockStyle}">
+        <Setter Property="FontSize" Value="15"></Setter>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="CustomBodyTextBlockStyle" BasedOn="{StaticResource CustomBaseTextBlockStyle}">
+        <Setter Property="Foreground" Value="{ThemeResource CustomMediumHighTextBrush}"></Setter>
+    </Style>
+
+    <!-- Styles which apply globally -->
+    <Style TargetType="TextBlock" BasedOn="{StaticResource CustomBaseTextBlockStyle}"></Style>
+    <!-- -->
+
+</ResourceDictionary>
