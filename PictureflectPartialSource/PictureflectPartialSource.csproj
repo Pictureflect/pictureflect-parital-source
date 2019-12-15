@@ -141,6 +141,7 @@
     <Compile Include="UnhandledButton.cs" />
     <Compile Include="VariableSlider.xaml.cs" />
     <Compile Include="VisibilityConverters.cs" />
+    <Compile Include="WrapPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
