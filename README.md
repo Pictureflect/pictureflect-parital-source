@@ -8,6 +8,9 @@ However, you are still welcome to create issues if you spot and bugs, have quest
 
 There are generally very few comments in the source code, and it may hard to follow in places, but there is some basic documentation of the classes/controls below.
 
+### Windows 10 verison
+In general the source code should work for Windows 10 1607 and later, although the solution is set to target 1709 and later, and code may be added in the future that requires this version.
+
 ## Documentation of classes/controls
 This is a work in progress...
 
