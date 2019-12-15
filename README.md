@@ -1,6 +1,8 @@
 # Pictureflect Partial Source
 Some of the more generic source code from Pictureflect Photo Viewer.
 
+Pictureflect Photo Viewer is a free image viewing app for Windows 10 with an optional Pro upgrade - [https://pictureflect.com](https://pictureflect.com).
+
 ## Introduction and disclaimer
 The purpose of this repository is to share some of the more reusable code from Pictureflect Photo Viewer. It is provided as a Visual Studio solution to make it easy to experiment with, and it also demonstrates the use of some custom controls.
 This is not intended to be used for development, and the quality of code is variable. In general code has been copied directly from the Pictureflect Photo Viewer source with a namespace change, and sometimes some omissions.

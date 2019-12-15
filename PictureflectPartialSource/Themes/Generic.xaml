@@ -67,20 +67,6 @@
     <StaticResource x:Key="CustomMediaControlsExtraIconFontFamily" ResourceKey="CustomExtraIconFontFamily"></StaticResource>
     <x:Double x:Key="CustomMediaControlsIconFontSize">20</x:Double>
 
-    <Style TargetType="local:UnhandledButton" >
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:UnhandledButton">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <Style TargetType="local:CustomSlider">
         <Setter Property="Minimum" Value="0"></Setter>
         <Setter Property="Maximum" Value="100"></Setter>
