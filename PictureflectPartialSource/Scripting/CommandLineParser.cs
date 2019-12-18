@@ -132,7 +132,7 @@ namespace PictureflectPartialSource.Scripting {
                 if (chr == '"') {
                     if (backslashCount % 2 == 0) {
                         if (backslashCount > 0) {
-                            currentArgument.Append(Enumerable.Repeat('\\', backslashCount).ToArray());
+                            currentArgument.Append(Enumerable.Repeat('\\', backslashCount / 2).ToArray());
                         }
                         if (oldInArgument && !(inQuotes && (i >= trimmedInput.Length - 1 || char.IsWhiteSpace(trimmedInput[i + 1])))) {
                             currentArgument.Append(chr);
