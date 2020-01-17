@@ -5,62 +5,84 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PictureflectPartialSource {
+namespace BasicPhotoViewer {
 
-    //This class is not threadsafe - the public methods should all be called from the same thread. The Render handler runs on a different thread.
+    //This class is threadsafe. The Render handler runs on a different thread.
     public class CustomRenderLoop {
 
-        readonly object stateLock = new object(); //Only to be used for locking state
+        readonly object stateLock = new object();
         CustomRenderLoopState state = CustomRenderLoopState.Stopped; //Is accessed from render loop thread as well as main.
         public CustomRenderLoopState State {
             get { lock (stateLock) { return state; } }
-            set { lock (stateLock) { state = value; } }
+            private set { lock (stateLock) { state = value; } }
         }
 
         public event Action Render; //Is fired on the render loop thread.
         public event Action LoopExiting; //Is fired on the render loop thread.
         public event Action Stopped; //Will not fire if already stopped. Is fired on the main thread.
 
-        Task loopTask = null;
-        ManualResetEvent loopWaitEvent = null; //Is accessed from render loop thread as was as main. Only create and destroy this when the loop is not running.
+        TaskCompletionSource<bool> loopTaskSource = null;
+        ManualResetEvent loopWaitEvent = null; //Only create and destroy this when the loop is not running.
+        ManualResetEvent LoopWaitEvent { get { lock (stateLock) { return loopWaitEvent; } } } //Is accessed from render loop thread as was as main. Only create and destroy this when the loop is not running.
         bool initialLoopWaitEventState = false;
         bool restart = false;
 
-        public void Start() {
-            if (State == CustomRenderLoopState.Running) {
-                return;
+        public async void Start() {
+            lock (stateLock) {
+                if (state == CustomRenderLoopState.Running) {
+                    return;
+                }
+                if (state == CustomRenderLoopState.Stopping) {
+                    restart = true;
+                    return;
+                }
+                restart = false;
+                if (loopWaitEvent == null) {
+                    loopWaitEvent = new ManualResetEvent(initialLoopWaitEventState);
+                }
+                state = CustomRenderLoopState.Running;
+                loopTaskSource = new TaskCompletionSource<bool>();
             }
-            if (State == CustomRenderLoopState.Stopping) {
-                restart = true;
-                return;
+            try {
+                await Task.Factory.StartNew(() => LoopHandler(), CancellationToken.None, TaskCreationOptions.DenyChildAttach | TaskCreationOptions.LongRunning, TaskScheduler.Default);
+            } finally {
+                TaskCompletionSource<bool> localLoopTaskSource = null;
+                lock (stateLock) {
+                    localLoopTaskSource = loopTaskSource;
+                    loopTaskSource = null;
+                }
+                localLoopTaskSource?.TrySetResult(true);
             }
-            restart = false;
-            if (loopWaitEvent == null) {
-                loopWaitEvent = new ManualResetEvent(initialLoopWaitEventState);
-            }
-            State = CustomRenderLoopState.Running;
-            loopTask = Task.Factory.StartNew(() => LoopHandler(), CancellationToken.None, TaskCreationOptions.DenyChildAttach | TaskCreationOptions.LongRunning, TaskScheduler.Default);
         }
 
         public async void Stop() { //Note that it is essential to call Stop to ensure proper disposal
-            restart = false;
-            if (State == CustomRenderLoopState.Stopped || State == CustomRenderLoopState.Stopping) {
-                return;
-            }
-            State = CustomRenderLoopState.Stopping;
-            Invalidate();
-            if (loopTask != null) {
-                await loopTask;
-                loopTask = null;
-            }
-            if (loopWaitEvent != null) {
-                loopWaitEvent.Dispose();
-                loopWaitEvent = null;
-            }
-            State = CustomRenderLoopState.Stopped;
-            Stopped?.Invoke();
-            if (restart) {
+            Task localLoopTask = null;
+            lock (stateLock) {
                 restart = false;
+                if (State == CustomRenderLoopState.Stopped || State == CustomRenderLoopState.Stopping) {
+                    return;
+                }
+                State = CustomRenderLoopState.Stopping;
+                Invalidate();
+                localLoopTask = loopTaskSource?.Task;
+            }
+            if (localLoopTask != null) {
+                await localLoopTask;
+            }
+            var localRestart = false;
+            lock (stateLock) {
+                if (loopWaitEvent != null) {
+                    loopWaitEvent.Dispose();
+                    loopWaitEvent = null;
+                }
+                State = CustomRenderLoopState.Stopped;
+                Stopped?.Invoke();
+                if (restart) {
+                    localRestart = true;
+                    restart = false;
+                }
+            }
+            if (localRestart) {
                 Start();
             }
         }
@@ -71,21 +93,27 @@ namespace PictureflectPartialSource {
         }
 
         public void Invalidate() {
-            if (loopWaitEvent != null) {
-                loopWaitEvent.Set();
-            } else {
-                initialLoopWaitEventState = true;
+            ManualResetEvent localLoopWaitEvent = null;
+            lock (stateLock) {
+                if (loopWaitEvent != null) {
+                    localLoopWaitEvent = loopWaitEvent;
+                } else {
+                    initialLoopWaitEventState = true;
+                }
+            }
+            if (localLoopWaitEvent != null) {
+                localLoopWaitEvent.Set();
             }
         }
 
         void LoopHandler() {
             while (State == CustomRenderLoopState.Running) {
                 try {
-                    loopWaitEvent.WaitOne();
+                    LoopWaitEvent?.WaitOne();
                     if (State != CustomRenderLoopState.Running) {
                         break;
                     }
-                    loopWaitEvent.Reset();
+                    LoopWaitEvent?.Reset();
                 } catch (Exception) {
                     break; //This should only occur if the owning thread has been disposed so we don't try to recover the loop here
                 }
