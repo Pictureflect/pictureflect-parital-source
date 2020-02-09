@@ -134,6 +134,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PointerOverManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripting\CommandLineParser.cs" />
     <Compile Include="SynchronizationHelpers\AsyncLock.cs" />

@@ -38,7 +38,7 @@ namespace PictureflectPartialSource {
         public static readonly DependencyProperty OrientationProperty = DependencyProperty.Register(nameof(Orientation), typeof(Orientation), typeof(CustomSlider), new PropertyMetadata(Orientation.Horizontal, LayoutPropertyChanged));
 
         private static void LayoutPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
-            if(d == null || !(d is CustomSlider control)) {
+            if (d == null || !(d is CustomSlider control)) {
                 return;
             }
             control.UpdateControls();
@@ -66,6 +66,7 @@ namespace PictureflectPartialSource {
         }
 
         FrameworkElement sliderContainer = null;
+        PointerOverManager sliderContainerPointerOverManager = null;
         Grid horizontalTemplate = null;
         FrameworkElement horizontalThumb = null;
         TranslateTransform horizontalThumbTransform = new TranslateTransform();
@@ -89,12 +90,13 @@ namespace PictureflectPartialSource {
                 sliderContainer.ManipulationStarted += SliderContainer_ManipulationStarted;
                 sliderContainer.ManipulationDelta += SliderContainer_ManipulationDelta;
                 sliderContainer.ManipulationCompleted += SliderContainer_ManipulationCompleted;
-                sliderContainer.PointerEntered += SliderContainer_PointerEntered;
-                sliderContainer.PointerExited += SliderContainer_PointerExited;
                 sliderContainer.Unloaded += SliderContainer_Unloaded;
+                sliderContainerPointerOverManager = new PointerOverManager(sliderContainer, true);
+                sliderContainerPointerOverManager.IsPointerOverChanged += SliderContainerPointerOverManager_IsPointerOverChanged;
+
             }
             horizontalTemplate = GetTemplateChild("HorizontalTemplate") as Grid;
-            if(horizontalTemplate != null) {
+            if (horizontalTemplate != null) {
                 horizontalTemplate.SizeChanged += HorizontalTemplate_SizeChanged;
             }
             horizontalThumb = GetTemplateChild("HorizontalThumb") as FrameworkElement;
@@ -274,7 +276,7 @@ namespace PictureflectPartialSource {
 
         void UpdateControls() {
             if (Orientation == Orientation.Vertical) {
-                if(sliderContainer != null) {
+                if (sliderContainer != null) {
                     sliderContainer.ManipulationMode = ManipulationModes.TranslateY;
                 }
                 if (verticalTemplate != null && verticalTemplate.Visibility != Visibility.Visible) {
@@ -290,7 +292,7 @@ namespace PictureflectPartialSource {
                 if (horizontalTemplate != null && horizontalTemplate.Visibility != Visibility.Visible) {
                     horizontalTemplate.Visibility = Visibility.Visible;
                 }
-                if (verticalTemplate != null && verticalTemplate.Visibility != Visibility.Collapsed){
+                if (verticalTemplate != null && verticalTemplate.Visibility != Visibility.Collapsed) {
                     verticalTemplate.Visibility = Visibility.Collapsed;
                 }
             }
@@ -358,13 +360,8 @@ namespace PictureflectPartialSource {
             Value = Math.Max(Minimum, Math.Min(Maximum, correctedValue));
         }
 
-        private void SliderContainer_PointerEntered(object sender, PointerRoutedEventArgs e) {
-            isPointerOver = true;
-            UpdateVisualState();
-        }
-
-        private void SliderContainer_PointerExited(object sender, PointerRoutedEventArgs e) {
-            isPointerOver = false;
+        private void SliderContainerPointerOverManager_IsPointerOverChanged(PointerOverManager sender) {
+            isPointerOver = sender.IsPointerOver;
             UpdateVisualState();
         }
 
@@ -377,7 +374,7 @@ namespace PictureflectPartialSource {
         void UpdateVisualState() {
             if (!IsEnabled) {
                 VisualStateManager.GoToState(this, "Disabled", false);
-            } else if(isPressed) {
+            } else if (isPressed) {
                 VisualStateManager.GoToState(this, "Pressed", true);
             } else if (isPointerOver) {
                 VisualStateManager.GoToState(this, "PointerOver", true);
