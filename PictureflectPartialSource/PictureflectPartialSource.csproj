@@ -123,6 +123,7 @@
     <Compile Include="BaseNotifyPropertyChanged.cs" />
     <Compile Include="BooleanConverters.cs" />
     <Compile Include="Core\AppStorageItemAccessList.cs" />
+    <Compile Include="CustomFlyout.cs" />
     <Compile Include="CustomRatingControl.cs" />
     <Compile Include="CustomRenderLoop.cs" />
     <Compile Include="CustomShadowControl.cs" />
