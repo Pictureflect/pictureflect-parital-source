@@ -17,9 +17,9 @@ namespace PictureflectPartialSource {
             while (targetParent != null && !(targetParent is FlyoutPresenter)) {
                 targetParent = VisualTreeHelper.GetParent(targetParent) as UIElement;
             }
-            if (targetParent is FlyoutPresenter && targetParent.Translation.Z == presenter.Translation.Z) {
-                var translation = presenter.Translation;
-                translation.Z += 1;
+            if (targetParent is FlyoutPresenter && targetParent.Translation.Z >= presenter.Translation.Z) {
+                var translation = targetParent.Translation;
+                translation.Z += 0.0001f;
                 presenter.Translation = translation;
             }
             return presenter;
