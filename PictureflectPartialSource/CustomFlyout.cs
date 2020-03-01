@@ -19,7 +19,7 @@ namespace PictureflectPartialSource {
             }
             if (targetParent is FlyoutPresenter && targetParent.Translation.Z >= presenter.Translation.Z) {
                 var translation = targetParent.Translation;
-                translation.Z += 0.0001f;
+                translation.Z += 0.01f;
                 presenter.Translation = translation;
             }
             return presenter;
